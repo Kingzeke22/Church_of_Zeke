@@ -1,11 +1,13 @@
 import { defineConfig } from "tinacms";
 
-// Your hosting provider likely exposes this as an environment variable
+// 1. Add CF_PAGES_BRANCH to automatically detect the branch on Cloudflare
+// 2. Reverted default to "main" (safest option if variables fail)
 const branch =
   process.env.GITHUB_BRANCH ||
   process.env.VERCEL_GIT_COMMIT_REF ||
+  process.env.CF_PAGES_BRANCH ||
   process.env.HEAD ||
-  "master";
+  "main";
 
 export default defineConfig({
   branch,
@@ -34,6 +36,37 @@ export default defineConfig({
         path: "content/posts",
         fields: [
           {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
+          {
+            type: "datetime",
+            name: "postedDate",
+            label: "Date Posted",
+            ui: {
+              dateFormat: "MMMM DD YYYY",
+              parse: (value) => value && value.format("YYYY-MM-DD"),
+            },
+          },
+          {
+            type: "image",
+            name: "heroImage",
+            label: "Hero Image",
+          },
+        ],
+      },
+    ],
+  },
+});
             type: "string",
             name: "title",
             label: "Title",
