@@ -10,6 +10,14 @@ that aren't obvious from a generic Astro template.
 - Build: `npm run build` — runs `tinacms build && astro build && pagefind --site dist && cp -r dist/pagefind public/`.
 - Preview: `npm run preview` — runs `astro preview` to serve `./dist` locally.
 
+Preferred (pnpm):
+- Dev: `pnpm run dev` — runs `tinacms dev -c "astro dev"` (starts Tina CMS + Astro dev server).
+- Build: `pnpm run build` — runs `tinacms build && astro build && pagefind --site dist && cp -r dist/pagefind public/`.
+- Preview: `pnpm run preview` — runs `astro preview` to serve `./dist` locally.
+
+Notes: Use `pnpm install` to respect the included `pnpm-lock.yaml`. If you must use npm, the npm equivalents
+are still valid (`npm install`, `npm run build`), but keep a single lockfile to avoid conflicts.
+
 Notes: the build step runs `pagefind` against `dist` and copies `dist/pagefind` into `public/` so
 search assets are available for the deployed site. Ensure the `pagefind` devDependency is present
 before running build locally.

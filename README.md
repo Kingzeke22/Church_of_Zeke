@@ -52,12 +52,15 @@ All commands are run from the root of the project, from a terminal:
 
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
+| `pnpm install` (preferred) / `npm install` | Installs dependencies                            |
+| `pnpm run dev` (preferred) / `npm run dev` | Starts local dev server at `localhost:4321`      |
+| `pnpm run build` (preferred) / `npm run build` | Build your production site to `./dist/`          |
+| `pnpm run preview` (preferred) / `npm run preview` | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+Note: This repository contains a `pnpm-lock.yaml`. We recommend using `pnpm` (Corepack or global)
+to install and build for deterministic installs. See `.github/copilot-instructions.md` for more details.
 
 ## 👀 Want to learn more?
 
