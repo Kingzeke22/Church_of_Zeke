@@ -2,9 +2,10 @@
   "name": "zeke_burlbaw",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@8.6.0",
   "scripts": {
-    "dev": "tinacms dev -c \"astro dev\"",  
-    "build": "astro build && pagefind --site dist && cp -r dist/pagefind public/",
+    "dev": "tinacms dev -c \"astro dev\"",
+    "build": "if [ -n \"$TINA_PUBLIC_CLIENT_ID\" ] && [ -n \"$TINA_TOKEN\" ]; then tinacms build; else echo 'skipping tinacms build (Tina Cloud not configured)'; fi && astro build && pagefind --site dist && cp -r dist/pagefind public/",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -17,12 +18,15 @@
     "@types/alpinejs": "^3.13.11",
     "alpinejs": "^3.14.8",
     "astro": "^5.4.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "astro-tina": "^0.1.3",
     "tailwindcss": "^4.0.9",
-    "tinacms": "^2.9.0"
+    "tinacms": "^2.1.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
-    "@tinacms/cli": "^1.11.0",
+    "@tinacms/cli": "^1.3.3",
     "@types/node": "^24.9.2",
     "pagefind": "^1.3.0"
   }
